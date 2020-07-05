@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+import projects.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', projects.views.home, name = 'home'),
+    path('project1/', projects.views.project1, name = 'project1'),
+    path('project2/', projects.views.project2, name = 'project2'),
+    path('project3/', projects.views.project3, name = 'project3'),
+    path('project4/', projects.views.project4, name = 'project4'),
+    path('project6/', projects.views.project6, name = 'project6'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
